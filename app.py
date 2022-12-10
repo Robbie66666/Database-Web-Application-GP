@@ -20,7 +20,7 @@ class User():
 
 #####################
 
-
+@app.route('/')
 @app.route('/football',methods=['GET','POST']) ##insert for football
 def football():##insert for football
     print('in football:', request.method)
