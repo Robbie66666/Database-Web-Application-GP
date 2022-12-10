@@ -5,100 +5,108 @@
 <h1>Edit Employee</h1>
 <form method="post">
     <div class="mb-3">
-        <label for="employee_id" class="form-label">OID</label>
+        <label for="fb_id" class="form-label">ID</label>
         <div class="col-sm-10">
-        <input type="text"  class="form-control" id="employee_id" value="{{data[0] if data [0] else ''}}">      
+        <input type="text"  class="form-control" id="fb_id" value="{{data[0] if data [0] else ''}}">      
       </div>
     </div>
 
 
     <div class="mb-3">
-        <label for="first_name" class="form-label">First Name</label>
+        <label for="fb_date" class="form-label">Date</label>
         <div class="col-sm-10">
-        <input type="text"  class="form-control" id="first_name" name="first_name" value="{{data[1] if data [1] else ''}}">      
+        <input type="text"  class="form-control" id="fb_date" name="fb_date" value="{{data[1] if data [1] else ''}}">      
       </div>
     </div>
 
 
     <div class="mb-3">
-        <label for="last_name" class="form-label">Last Name</label>
+        <label for="fb_home_team" class="form-label">Home Team</label>
         <div class="col-sm-10">
-        <input type="text"  class="form-control" id="last_name"  name='last_name' value="{{data[2] if data [2] else ''}}">      
-      </div>
-    </div>
-
-
-
-    <div class="mb-3">
-        <label for="email" class="form-label">EMAIL</label>
-        <div class="col-sm-10">
-        <input type="text"  class="form-control" id="email"  name='email' value="{{data[3] if data [3] else ''}}">   <!---data number must match row --> 
-      </div>
-    </div>
-
-
-    <div class="mb-3">
-        <label for="phone_number" class="form-label">Phone number</label>
-        <div class="col-sm-10">
-        <input type="text"  class="form-control" id="phone_number"  name='phone_number' value="{{data[4] if data [4] else ''}}">   <!---data number must match row --> 
-      </div>
-    </div>
-
-
-    <div class="mb-3">
-        <label for="hire_date" class="form-label">HIRE_DATE</label>
-        <div class="col-sm-10">
-        <input type="text"  class="form-control" id="hire_date"  name='hire_date' value="{{data[5] if data [5] else ''}}">   <!---data number must match row --> 
-      </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="job_id" class="form-label">JOB_ID</label>
-        <div class="col-sm-10">
-        <input type="text"  class="form-control" id="job_id"  name='job_id' value="{{data[6] if data [6] else ''}}">   <!---data number must match row --> 
-      </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="salary" class="form-label">SALARY</label>
-        <div class="col-sm-10">
-        <input type="text"  class="form-control" id="salary"  name='salary' value="{{data[7] if data [7] else ''}}">   <!---data number must match row --> 
-      </div>
-    </div>
-
-
-    <div class="mb-3">
-        <label for="commission_pct" class="form-label">commission_pct</label>
-        <div class="col-sm-10">
-        <input type="text"  class="form-control" id="commission_pct"  name='commission_pct' value="{{data[8] if data [8] else ''}}">   <!---data number must match row --> 
+        <input type="text"  class="form-control" id="fb_home_team"  name='fb_home_team' value="{{data[2] if data [2] else ''}}">      
       </div>
     </div>
 
 
 
     <div class="mb-3">
-        <label for="manager_id" class="form-label">MANAGER_ID</label>
+        <label for="fb_away_team" class="form-label">Away Team</label>
         <div class="col-sm-10">
-        <input type="text"  class="form-control" id="manager_id"  name='manager_id' value="{{data[9] if data [9] else ''}}">   <!---data number must match row --> 
+        <input type="text"  class="form-control" id="fb_away_team"  name='fb_away_team' value="{{data[3] if data [3] else ''}}">   <!---data number must match row --> 
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="fb_h_continent" class="form-label">Home Team Continent</label>
+        <div class="col-sm-10">
+        <input type="text"  class="form-control" id="fb_h_continent"  name='fb_h_continent' value="{{data[4] if data [4] else ''}}">   <!---data number must match row --> 
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="fb_a_continent" class="form-label">Away Team Continent</label>
+        <div class="col-sm-10">
+        <input type="text"  class="form-control" id="fb_a_continent"  name='fb_a_continent' value="{{data[5] if data [5] else ''}}">   <!---data number must match row --> 
+      </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="fb_ht_score" class="form-label">Home Team Score</label>
+        <div class="col-sm-10">
+        <input type="text"  class="form-control" id="fb_ht_score"  name='fb_ht_score' value="{{data[6] if data [6] else ''}}">   <!---data number must match row --> 
+      </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="fb_at_score" class="form-label">Away Team Score</label>
+        <div class="col-sm-10">
+        <input type="text"  class="form-control" id="fb_at_score"  name='fb_at_score' value="{{data[7] if data [7] else ''}}">   <!---data number must match row --> 
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="fb_tournament" class="form-label">Tournament</label>
+        <div class="col-sm-10">
+        <input type="text"  class="form-control" id="fb_tournament"  name='fb_tournament' value="{{data[8] if data [8] else ''}}">   <!---data number must match row --> 
       </div>
     </div>
 
 
 
     <div class="mb-3">
-        <label for="department_id" class="form-label">DEPARTMENT_ID</label>
+        <label for="fb_country" class="form-label">Country</label>
         <div class="col-sm-10">
-        <input type="text"  class="form-control" id="department_id"  name='department_id' value="{{data[10] if data [10] else ''}}">   <!---data number must match row --> 
+        <input type="text"  class="form-control" id="fb_country"  name='fb_country' value="{{data[9] if data [9] else ''}}">   <!---data number must match row --> 
+      </div>
+    </div>
+
+
+
+    <div class="mb-3">
+        <label for="fb_n_location" class="form-label">Location</label>
+        <div class="col-sm-10">
+        <input type="text"  class="form-control" id="fb_n_location"  name='fb_n_location' value="{{data[10] if data [10] else ''}}">   <!---data number must match row --> 
       </div>
     </div>
 
 
     <div class="mb-3">
-        <label for="department_name" class="form-label">department_name</label>
+        <label for="fb_shoot_out" class="form-label">Shoot Out</label>
         <div class="col-sm-10">
-        <input type="text"  class="form-control" id="department_name"  name='department_name' value="{{data[11] if data [11] else ''}}">   <!---data number must match row --> 
+        <input type="text"  class="form-control" id="fb_shoot_out"  name='fb_shoot_out' value="{{data[11] if data [11] else ''}}">   <!---data number must match row --> 
       </div>
     </div>
+
+    <div class="mb-3">
+        <label for="fb_ht_result" class="form-label">Home Team Result</label>
+        <div class="col-sm-10">
+        <input type="text"  class="form-control" id="fb_ht_result"  name='fb_ht_result' value="{{data[11] if data [12] else ''}}">   <!---data number must match row --> 
+      </div>
+    </div>
+
 
     <button type="submit" class="btn btn-primary btn-sm">Save</button>
     <button type="button"> <a href='employee'class="btn btn-secondary btn-sm">Cancel</a></button>
@@ -106,5 +114,3 @@
     </form
 
 {% endblock content %}
-
-    

@@ -6,89 +6,99 @@
 <form method="post">
     
     <div class="mb-3">
-        <label for="first_name" class="form-label">date</label>
+        <label for="fb_date" class="form-label">date</label>
         <div class="col-sm-10">
-        <input   type="text"  class="form-control" id="first_name" name="first_name" >      
+        <input   type="text"  class="form-control" id="fb_date" name="fb_date" >      
       </div>
     </div>
 
 
     <div class="mb-3">
-        <label for="last_name" class="form-label">Last Name</label>
+        <label for="fb_home_team" class="form-label">Home Team</label>
         <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="last_name"  name='last_name' >      
+        <input  type="text"  class="form-control" id="fb_home_team"  name='fb_home_team' >      
       </div> 
     </div>
 
 
 
     <div class="mb-3">
-        <label for="email" class="form-label">EMAIL</label>
+        <label for="fb_away_team" class="form-label">Away Team</label>
         <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="email"  name='email' >   <!---data number must match row --> 
+        <input  type="text"  class="form-control" id="fb_away_team"  name='fb_away_team' >   <!---data number must match row --> 
       </div>
     </div>
 
 
     <div class="mb-3">
-        <label for="phone_number" class="form-label">Phone number</label>
+        <label for="fb_h_continent" class="form-label">Home Team Continent</label>
         <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="phone_number"  name='phone_number' >   <!---data number must match row --> 
+        <input  type="text"  class="form-control" id="fb_h_continent"  name='fb_h_continent' >   <!---data number must match row --> 
       </div>
     </div>
 
 
     <div class="mb-3">
-        <label for="hire_date" class="form-label">HIRE_DATE</label>
+        <label for="fb_a_continent" class="form-label">Away Team Continent</label>
         <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="hire_date"  name='hire_date' >   <!---data number must match row --> 
+        <input  type="text"  class="form-control" id="fb_a_continent"  name='fb_a_continent' >   <!---data number must match row --> 
       </div>
     </div>
 
     <div class="mb-3">
-        <label for="job_id" class="form-label">JOB_ID</label>
+        <label for="fb_ht_score" class="form-label">Home Team Score</label>
         <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="job_id"  name='job_id' >   <!---data number must match row --> 
+        <input  type="text"  class="form-control" id="fb_ht_score"  name='fb_ht_score' >   <!---data number must match row --> 
       </div>
     </div>
 
     <div class="mb-3">
-        <label for="salary" class="form-label">SALARY</label>
+        <label for="fb_at_score" class="form-label">Away Team Score</label>
         <div class="col-sm-10">
+        <input  type="text"  class="form-control" id="fb_at_score"  name='fb_at_score'>
+      </div>
+    </div> 
+
+
+    <div class="mb-3">
+        <label for="fb_tournament" class="form-label">Tournament</label>
+        <div class="col-sm-10">
+        <input  type="text"  class="form-control" id="fb_tournament"  name='fb_tournament'>
+      </div>
+    </div> 
+      
+    <div class="mb-3">
+        <label for="fb_country" class="form-label">Country</label>
+        <div class="col-sm-10">
+        <input  type="text"  class="form-control" id="fb_country"  name='fb_country'>   <!---data number must match row --> 
+      </div>
+    </div>
+
+
+
+    <div class="mb-3">
+        <label for="fb_n_location" class="form-label">Location</label>
+        <div class="col-sm-10">
+        <input  type="text"  class="form-control" id="fb_n_location"  name='fb_n_location' >   <!---data number must match row --> 
       </div>
     </div>
 
 
     <div class="mb-3">
-        <label for="commission_pct" class="form-label">commission_pct</label>
+        <label for="fb_shoot_out" class="form-label">Shoot Out</label>
         <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="commission_pct"  name='commission_pct'>
-        </div> <div>
-            
-            
-        <class="mb-3">
-        <label for="manager_id" class="form-label">MANAGER_ID</label>
-        <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="manager_id"  name='manager_id'>   <!---data number must match row --> 
-      </div>
-    </div>
-
-
-
-    <div class="mb-3">
-        <label for="department_id" class="form-label">DEPARTMENT_ID</label>
-        <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="department_id"  name='department_id' >   <!---data number must match row --> 
+        <input  type="text"  class="form-control" id="fb_shoot_out"  name='fb_shoot_out' >   <!---data number must match row --> 
       </div>
     </div>
 
 
     <div class="mb-3">
-        <label for="department_name" class="form-label">department_name</label>
+        <label for="fb_ht_result" class="form-label">Home Team Result</label>
         <div class="col-sm-10">
-        <input  type="text"  class="form-control" id="department_name"  name='department_name' >   <!---data number must match row --> 
+        <input  type="text"  class="form-control" id="fb_ht_result"  name='fb_ht_result' >   <!---data number must match row --> 
       </div>
     </div>
+
 
     <button type="submit" class="btn btn-primary" >Success</button>
     <button type="button"> <a href='employee'class="btn btn-secondary btn-sm">Cancel</a></button>
@@ -96,5 +106,3 @@
     </form
 
 {% endblock content %}
-
-    
