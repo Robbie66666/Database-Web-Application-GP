@@ -153,7 +153,7 @@ def football_edit(id):
         '''
  ##insert  for football
         cursor=connection.cursor()
-        cursor.execute(query,fb_id=id,fb_date=fb_date,fb_home_team=fb_home_team,fb_away_team=fb_away_team,fb_h_continent=fb_h_continent,
+        cursor.execute(query,fb_id=fb_id,fb_date=fb_date,fb_home_team=fb_home_team,fb_away_team=fb_away_team,fb_h_continent=fb_h_continent,
         fb_a_continent=fb_a_continent,fb_ht_score=fb_ht_score,fb_at_score=fb_at_score,fb_tournament=fb_tournament,fb_city=fb_city,
         fb_country=fb_country,fb_n_location=fb_n_location,fb_shoot_out=fb_shoot_out,fb_ht_result=fb_ht_result
         )
@@ -223,17 +223,17 @@ def football_add():
             insert_statement="""
 
                                  INSERT INTO HR_EMPLOYEE_STAGE
-                                         (
+                                        (
                                         fb_id,
                                         fb_date,
                                         fb_home_team,
-                                        fb_away_team,
-                                        PHONE_NUMBER,
+                                        fb_away_team,           
                                         fb_h_continent,
                                         fb_a_continent,
                                         fb_ht_score,
                                         fb_at_score,
                                         fb_tournament,
+                                        fb_city,
                                         fb_country,
                                         fb_n_location,
                                         fb_shoot_out,
@@ -243,13 +243,13 @@ def football_add():
                                         :fb_id,
                                         :fb_date,
                                         :fb_home_team,
-                                        :fb_away_team,
-                                        :PHONE_NUMBER,
+                                        :fb_away_team,                                      
                                         :fb_h_continent,
                                         :fb_a_continent,
                                         :fb_ht_score,
                                         :fb_at_score,
                                         :fb_tournament,
+                                        :fb_city,
                                         :fb_country,
                                         :fb_n_location,
                                         :fb_shoot_out,
@@ -258,31 +258,36 @@ def football_add():
                                         """
 ##insert  for footbal
             seq_statement = """
-                select seq_emp.nextval from dual
+                select football_matches_seq.nextval from dual
 
                 """
             cursor.execute(seq_statement)
-            employee_id = cursor.fetchone()[0]
-            first_name = request.form.get("first_name")
-            last_name = request.form.get("last_name")
-            email = request.form.get("email")
-            phone_number = request.form.get("phone_number")
-            hire_date = request.form.get("hire_date")
-            job_id = request.form.get("job_id")
-            salary = request.form.get("salary")
-            commission_pct = request.form.get("commission_pct")
-            manager_id = request.form.get("manager_id")
-            department_id = request.form.get("department_id")
-            department_name = request.form.get("department_name")
+            fb_id = cursor.fetchone()[0]
+            fb_date = request.form.get("fb_date")
+            fb_home_team = request.form.get("fb_home_team")
+            fb_away_team = request.form.get("fb_away_team")
+            fb_h_continent = request.form.get("fb_h_continent")
+            fb_a_continent = request.form.get("fb_a_continent")
+            fb_ht_score = request.form.get("fb_ht_score")
+            fb_at_score = request.form.get("fb_at_score")
+            fb_tournament = request.form.get("fb_tournament")
+            fb_city = request.form.get("fb_city")
+            fb_n_location = request.form.get("fb_n_location")
+            fb_shoot_out = request.form.get("fb_shoot_out")
+            fb_ht_result = request.form.get("fb_ht_result")
             #change datatype for hire_date(str) to datetime when saving it back to database
             datetime_object = datetime.strptime(hire_date, '%Y-%m-%d %H:%M:%S')
 
-            cursor.execute(insert_statement, employee_id=employee_id, first_name=first_name,last_name=last_name,email = email,phone_number = phone_number,hire_date=datetime_object,job_id = job_id,salary = salary,commission_pct = commission_pct,manager_id = manager_id,department_id = department_id,department_name = department_name) 
+            
+ 
+            cursor.execute(insert_statement,fb_id=fb_id,fb_date=fb_date,fb_home_team=fb_home_team,fb_away_team=fb_away_team,fb_h_continent=fb_h_continent,
+        fb_a_continent=fb_a_continent,fb_ht_score=fb_ht_score,fb_at_score=fb_at_score,fb_tournament=fb_tournament,fb_city=fb_city,
+        fb_country=fb_country,fb_n_location=fb_n_location,fb_shoot_out=fb_shoot_out,fb_ht_result=fb_ht_result) 
             connection.commit()
-            return redirect(url_for('employee'))
+            return redirect(url_for('football'))
 
 
-    return render_template("employee_add.html",title=" delete Employees", data=data)
+    return render_template("football_add.html",title=" delete football", data=data)
 
 
 
