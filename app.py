@@ -20,12 +20,13 @@ class User():
 
 #####################
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 @app.route('/football',methods=['GET','POST']) ##insert for football
 def football():##insert for football
     print('in football:', request.method)
     if request.method == "POST":
         file =request.files ['dataFile']
+        print('in football:', "POST IF STATEMENT")
         if file: ##this mean
             filename=secure_filename(file.filename)
             file_path=os.path.join(app.config['UPLOAD_FOLDER'],filename)
@@ -51,40 +52,41 @@ def football():##insert for football
 
                         ##insert for football
                         insert_statement= '''
-                                 INSERT INTO football_matches
+                                 INSERT INTO FOOTBALL_MATCHES
                                         (
-                                        fb_id,
-                                        fb_date,
-                                        fb_home_team,
-                                        fb_away_team,           
-                                        fb_h_continent,
-                                        fb_a_continent,
-                                        fb_ht_score,
-                                        fb_at_score,
-                                        fb_tournament,
-                                        fb_city,
-                                        fb_country,
-                                        fb_n_location,
-                                        fb_shoot_out,
-                                        fb_ht_result)
-                                    
-                                         VALUES(
-                                        :fb_id,
-                                        :fb_date,
-                                        :fb_home_team,
-                                        :fb_away_team,                                      
-                                        :fb_h_continent,
-                                        :fb_a_continent,
-                                        :fb_ht_score,
-                                        :fb_at_score,
-                                        :fb_tournament,
-                                        :fb_city,
-                                        :fb_country,
-                                        :fb_n_location,
-                                        :fb_shoot_out,
-                                        :fb_ht_result)
-                                        )
+                                        
+                                        FB_DATE,
+                                        FB_HOME_TEAM,
+                                        FB_AWAY_TEAM,
+                                        FB_H_CONTINENT,
+                                        FB_A_CONTINENT,
+                                        FB_HT_SCORE,
+                                        FB_AT_SCORE,
+                                        FB_TOURNAMENT,
+                                        FB_CITY,
+                                        FB_COUNTRY,
+                                        FB_N_LOCATION,
+                                        FB_SHOOT_OUT,
+                                        FB_HT_RESULT)
+
+                                        VALUES(
+                                        
+                                        :FB_DATE,
+                                        :FB_HOME_TEAM,
+                                        :FB_AWAY_TEAM,
+                                        :FB_H_CONTINENT,
+                                        :FB_A_CONTINENT,
+                                        :FB_HT_SCORE,
+                                        :FB_AT_SCORE,
+                                        :FB_TOURNAMENT,
+                                        :FB_CITY,
+                                        :FB_COUNTRY,
+                                        :FB_N_LOCATION,
+                                        :FB_SHOOT_OUT,
+                                        :FB_HT_RESULT)
                                         '''
+
+                        print('Insert Statement:', insert_statement)
                         cursor=connection.cursor() 
                         cursor.executemany(insert_statement, data)
                         connection.commit()
@@ -100,7 +102,7 @@ def football():##insert for football
         with OracleDB().get_connection() as connection:
             ##insert  for football
             query = '''
-                    select * from football_matches 
+                    select * from FOOTBALL_MATCHES 
                     '''
             cursor=connection.cursor()
             cursor.execute(query)
