@@ -122,30 +122,30 @@ def football_edit(id):
          ##insert  for football
         with OracleDB().get_connection() as connection:
            query = '''
-                    select * from football_matches where fb_id = :fb_id
+                    select * from FOOTBALL_MATCHES where FB_ID = :FB_ID
                     '''
         cursor=connection.cursor()
-        cursor.execute(query,fb_id=id)
+        cursor.execute(query,FB_ID=id)
         data=cursor.fetchone() #gets all records
     elif request.method == 'POST':##save button
  ##insert  for football
 
-        fb_date= request.form.get('fb_date')
-        fb_home_team= request.form.get('fb_home_team')
-        fb_away_team= request.form.get('fb_away_team')
-        fb_h_continent= request.form.get('fb_h_continent')
-        fb_a_continent= request.form.get('fb_a_continent')
-        fb_ht_score= request.form.get('fb_ht_score')
-        fb_at_score= request.form.get('fb_at_score')
-        fb_tournament= request.form.get('fb_tournament')
-        fb_city= request.form.get('fb_city')
-        fb_country= request.form.get('fb_country')
-        fb_n_location= request.form.get('fb_n_location')
-        fb_shoot_out= request.form.get('fb_shoot_out')
-        fb_ht_result= request.form.get('fb_ht_result')
+        FB_DATE= request.form.get('FB_DATE')
+        FB_HOME_TEAM= request.form.get('FB_HOME_TEAM')
+        FB_AWAY_TEAM= request.form.get('FB_AWAY_TEAM')
+        FB_H_CONTINENT= request.form.get('FB_H_CONTINENT')
+        FB_A_CONTINENT= request.form.get('FB_A_CONTINENT')
+        FB_HT_SCORE= request.form.get('FB_HT_SCORE')
+        FB_AT_SCORE= request.form.get('FB_AT_SCORE')
+        FB_TOURNAMENT= request.form.get('FB_TOURNAMENT')
+        FB_CITY= request.form.get('FB_CITY')
+        FB_COUNTRY= request.form.get('FB_COUNTRY')
+        FB_N_LOCATION= request.form.get('FB_N_LOCATION')
+        FB_SHOOT_OUT= request.form.get('FB_SHOOT_OUT')
+        FB_HT_RESULT= request.form.get('FB_HT_RESULT')
         
         
-        datetime_object=datetime.strptime(str(fb_date), '%Y-%m-%d %H:%M:%S')
+        datetime_object=datetime.strptime(str(FB_DATE), '%Y-%m-%d %H:%M:%S')
 
 
         
@@ -157,28 +157,28 @@ def football_edit(id):
         with OracleDB().get_connection() as connection:
              ##insert  for football
             query='''
-            update football_matches 
+            update FOOTBALL_MATCHES 
             set
-            fb_date=:fb_date,
-            fb_home_team=:fb_home_team,
-            fb_away_team=:fb_away_team,
-            fb_h_continent=:fb_h_continent,
-            fb_a_continent=:fb_a_continent,
-            fb_ht_score=:fb_ht_score,
-            fb_at_score=:fb_at_score,
-            fb_tournament=:fb_tournament,
-            fb_city=:fb_city,
-            fb_country=:department_id,
-            fb_n_location=:fb_n_location,
-            fb_shoot_out=:fb_shoot_out,
-            fb_ht_result=:fb_ht_result
-            where fb_id=:fb_id
+            FB_DATE=:FB_DATE,
+            FB_HOME_TEAM=:FB_HOME_TEAM,
+            FB_AWAY_TEAM=:FB_AWAY_TEAM,
+            FB_H_CONTINENT=:FB_H_CONTINENT,
+            FB_A_CONTINENT=:FB_A_CONTINENT,
+            FB_HT_SCORE=:FB_HT_SCORE,
+            FB_AT_SCORE=:FB_AT_SCORE,
+            FB_TOURNAMENT=:FB_TOURNAMENT,
+            FB_CITY=:FB_CITY,
+            FB_COUNTRY=:department_id,
+            FB_N_LOCATION=:FB_N_LOCATION,
+            FB_SHOOT_OUT=:FB_SHOOT_OUT,
+            FB_HT_RESULT=:FB_HT_RESULT
+            where FB_ID=:FB_ID
         '''
  ##insert  for football
         cursor=connection.cursor()
-        cursor.execute(query,fb_id=id,fb_date=fb_date,fb_home_team=fb_home_team,fb_away_team=fb_away_team,fb_h_continent=fb_h_continent,
-        fb_a_continent=fb_a_continent,fb_ht_score=fb_ht_score,fb_at_score=fb_at_score,fb_tournament=fb_tournament,fb_city=fb_city,
-        fb_country=fb_country,fb_n_location=fb_n_location,fb_shoot_out=fb_shoot_out,fb_ht_result=fb_ht_result
+        cursor.execute(query,FB_ID=id,FB_DATE=FB_DATE,FB_HOME_TEAM=FB_HOME_TEAM,FB_AWAY_TEAM=FB_AWAY_TEAM,FB_H_CONTINENT=FB_H_CONTINENT,
+        FB_A_CONTINENT=FB_A_CONTINENT,FB_HT_SCORE=FB_HT_SCORE,FB_AT_SCORE=FB_AT_SCORE,FB_TOURNAMENT=FB_TOURNAMENT,FB_CITY=FB_CITY,
+        FB_COUNTRY=FB_COUNTRY,FB_N_LOCATION=FB_N_LOCATION,FB_SHOOT_OUT=FB_SHOOT_OUT,FB_HT_RESULT=FB_HT_RESULT
         )
         print(type(datetime_object))
         print(datetime_object)
@@ -204,10 +204,10 @@ def football_delete(id):
         with OracleDB().get_connection() as connection:
            ##insert  for football
            query = '''
-                    select * from FOOTBALL_MATCHES where fb_id = :fb_id
+                    select * from FOOTBALL_MATCHES where FB_ID = :FB_ID
                     '''
         cursor=connection.cursor()
-        cursor.execute(query,fb_id=id)
+        cursor.execute(query,FB_ID=id)
         data=cursor.fetchone() #gets all records
     elif request.method == 'POST':##save button
 
@@ -215,12 +215,12 @@ def football_delete(id):
         with OracleDB().get_connection() as connection:
             query='''
             delete from FOOTBALL_MATCHES 
-            where  fb_id = :fb_id
+            where  FB_ID = :FB_ID
             
         '''
 
         cursor=connection.cursor()
-        cursor.execute(query,fb_id=id)
+        cursor.execute(query,FB_ID=id)
       
         connection.commit()
         return redirect( url_for('football') )
@@ -244,65 +244,65 @@ def football_add():
             insert_statement="""
                                  INSERT INTO FOOTBALL_MATCHES
                                         (
-                                        fb_id,
-                                        fb_date,
-                                        fb_home_team,
-                                        fb_away_team,           
-                                        fb_h_continent,
-                                        fb_a_continent,
-                                        fb_ht_score,
-                                        fb_at_score,
-                                        fb_tournament,
-                                        fb_city,
-                                        fb_country,
-                                        fb_n_location,
-                                        fb_shoot_out,
-                                        fb_ht_result)
+                                        FB_ID,
+                                        FB_DATE,
+                                        FB_HOME_TEAM,
+                                        FB_AWAY_TEAM,           
+                                        FB_H_CONTINENT,
+                                        FB_A_CONTINENT,
+                                        FB_HT_SCORE,
+                                        FB_AT_SCORE,
+                                        FB_TOURNAMENT,
+                                        FB_CITY,
+                                        FB_COUNTRY,
+                                        FB_N_LOCATION,
+                                        FB_SHOOT_OUT,
+                                        FB_HT_RESULT)
                                     
                                          VALUES(
-                                        :fb_id,
-                                        :fb_date,
-                                        :fb_home_team,
-                                        :fb_away_team,                                      
-                                        :fb_h_continent,
-                                        :fb_a_continent,
-                                        :fb_ht_score,
-                                        :fb_at_score,
-                                        :fb_tournament,
-                                        :fb_city,
-                                        :fb_country,
-                                        :fb_n_location,
-                                        :fb_shoot_out,
-                                        :fb_ht_result)
+                                        :FB_ID,
+                                        :FB_DATE,
+                                        :FB_HOME_TEAM,
+                                        :FB_AWAY_TEAM,                                      
+                                        :FB_H_CONTINENT,
+                                        :FB_A_CONTINENT,
+                                        :FB_HT_SCORE,
+                                        :FB_AT_SCORE,
+                                        :FB_TOURNAMENT,
+                                        :FB_CITY,
+                                        :FB_COUNTRY,
+                                        :FB_N_LOCATION,
+                                        :FB_SHOOT_OUT,
+                                        :FB_HT_RESULT)
                                         )
                                         """
 ##insert  for footbal
             seq_statement = """
-                select football_matches_seq.nextval from dual
+                select FOOTBALL_MATCHES_seq.nextval from dual
                 """
             cursor.execute(seq_statement)
-            fb_id = cursor.fetchone()[0]
-            fb_date = request.form.get("fb_date")
-            fb_home_team = request.form.get("fb_home_team")
-            fb_away_team = request.form.get("fb_away_team")
-            fb_h_continent = request.form.get("fb_h_continent")
-            fb_a_continent = request.form.get("fb_a_continent")
-            fb_ht_score = request.form.get("fb_ht_score")
-            fb_at_score = request.form.get("fb_at_score")
-            fb_tournament = request.form.get("fb_tournament")
-            fb_city = request.form.get("fb_city")
-            fb_country = request.form.get("fb_country")
-            fb_n_location = request.form.get("fb_n_location")
-            fb_shoot_out = request.form.get("fb_shoot_out")
-            fb_ht_result = request.form.get("fb_ht_result")
+            FB_ID = cursor.fetchone()[0]
+            FB_DATE = request.form.get("FB_DATE")
+            FB_HOME_TEAM = request.form.get("FB_HOME_TEAM")
+            FB_AWAY_TEAM = request.form.get("FB_AWAY_TEAM")
+            FB_H_CONTINENT = request.form.get("FB_H_CONTINENT")
+            FB_A_CONTINENT = request.form.get("FB_A_CONTINENT")
+            FB_HT_SCORE = request.form.get("FB_HT_SCORE")
+            FB_AT_SCORE = request.form.get("FB_AT_SCORE")
+            FB_TOURNAMENT = request.form.get("FB_TOURNAMENT")
+            FB_CITY = request.form.get("FB_CITY")
+            FB_COUNTRY = request.form.get("FB_COUNTRY")
+            FB_N_LOCATION = request.form.get("FB_N_LOCATION")
+            FB_SHOOT_OUT = request.form.get("FB_SHOOT_OUT")
+            FB_HT_RESULT = request.form.get("FB_HT_RESULT")
             #change datatype for hire_date(str) to datetime when saving it back to database
-            datetime_object = datetime.strptime(fb_date, '%Y-%m-%d %H:%M:%S')
+            datetime_object = datetime.strptime(FB_DATE, '%Y-%m-%d %H:%M:%S')
 
             
  
-            cursor.execute(insert_statement,fb_id=fb_id,fb_date=fb_date,fb_home_team=fb_home_team,fb_away_team=fb_away_team,fb_h_continent=fb_h_continent,
-            fb_a_continent=fb_a_continent,fb_ht_score=fb_ht_score,fb_at_score=fb_at_score,fb_tournament=fb_tournament,fb_city=fb_city,
-            fb_country=fb_country,fb_n_location=fb_n_location,fb_shoot_out=fb_shoot_out,fb_ht_result=fb_ht_result) 
+            cursor.execute(insert_statement,FB_ID=FB_ID,FB_DATE=FB_DATE,FB_HOME_TEAM=FB_HOME_TEAM,FB_AWAY_TEAM=FB_AWAY_TEAM,FB_H_CONTINENT=FB_H_CONTINENT,
+            FB_A_CONTINENT=FB_A_CONTINENT,FB_HT_SCORE=FB_HT_SCORE,FB_AT_SCORE=FB_AT_SCORE,FB_TOURNAMENT=FB_TOURNAMENT,FB_CITY=FB_CITY,
+            FB_COUNTRY=FB_COUNTRY,FB_N_LOCATION=FB_N_LOCATION,FB_SHOOT_OUT=FB_SHOOT_OUT,FB_HT_RESULT=FB_HT_RESULT) 
             connection.commit()
             return redirect(url_for('football'))
 
