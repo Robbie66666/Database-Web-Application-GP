@@ -1,0 +1,18 @@
+CREATE TABLE football_matches (
+    fb_id          NUMBER NOT NULL,
+    fb_date        DATE,
+    fb_home_team   VARCHAR2(100),
+    fb_away_team   VARCHAR2(100),
+    fb_h_continent VARCHAR2(100),
+    fb_a_continent VARCHAR2(100),
+    fb_ht_score    NUMBER,
+    fb_at_score    NUMBER,
+    fb_tournament  VARCHAR2(100),
+    fb_city        VARCHAR2(100),
+    fb_country     VARCHAR2(100),
+    fb_n_location  VARCHAR2(100),
+    fb_shoot_out   VARCHAR2(100),
+    fb_ht_result   VARCHAR2(100)
+);
+
+ALTER TABLE football_matches ADD CONSTRAINT football_matches_pk PRIMARY KEY ( fb_id );
