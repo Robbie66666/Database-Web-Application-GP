@@ -28,20 +28,23 @@ def football():##insert for football
 
                         ##insert for football
                         insert_statement= '''
-                                 INSERT INTO HR_EMPLOYEE_STAGE
+                                 INSERT INTO football_matches
                                         (
-                                        EMPLOYEE_ID,
-                                        FIRST_NAME,
-                                        LAST_NAME,
-                                        EMAIL,
+                                        fb_id,
+                                        fb_date,
+                                        fb_home_team,
+                                        fb_away_team,
                                         PHONE_NUMBER,
-                                        HIRE_DATE,
-                                        JOB_ID,
-                                        SALARY,
-                                        COMMISSION_PCT,
-                                        MANAGER_ID,
-                                        DEPARTMENT_ID,
-                                        DEPARTMENT_NAME)
+                                        fb_h_continent,
+                                        fb_a_continent,
+                                        fb_ht_score,
+                                        fb_at_score,
+                                        fb_tournament,
+                                        fb_country,
+                                        fb_n_location,
+                                        fb_shoot_out,
+                                        fb_ht_result)
+                                    
                                          VALUES(
                                         :EMPLOYEE_ID,
                                         :FIRST_NAME,
