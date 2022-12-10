@@ -46,18 +46,20 @@ def football():##insert for football
                                         fb_ht_result)
                                     
                                          VALUES(
-                                        :EMPLOYEE_ID,
-                                        :FIRST_NAME,
-                                        :LAST_NAME,
-                                        :EMAIL,
+                                        :fb_id,
+                                        :fb_date,
+                                        :fb_home_team,
+                                        :fb_away_team,
                                         :PHONE_NUMBER,
-                                        :HIRE_DATE,
-                                        :JOB_ID,
-                                        :SALARY,
-                                        :COMMISSION_PCT,
-                                        :MANAGER_ID,
-                                        :DEPARTMENT_ID,
-                                        :DEPARTMENT_NAME
+                                        :fb_h_continent,
+                                        :fb_a_continent,
+                                        :fb_ht_score,
+                                        :fb_at_score,
+                                        :fb_tournament,
+                                        :fb_country,
+                                        :fb_n_location,
+                                        :fb_shoot_out,
+                                        :fb_ht_result)
                                         )
                                         '''
                         cursor=connection.cursor() 
@@ -75,7 +77,7 @@ def football():##insert for football
         with OracleDB().get_connection() as connection:
             ##insert  for football
             query = '''
-                    select * from HR_EMPLOYEE_STAGE 
+                    select * from football_matches 
                     '''
             cursor=connection.cursor()
             cursor.execute(query)
@@ -95,26 +97,30 @@ def football_edit(id):
          ##insert  for football
         with OracleDB().get_connection() as connection:
            query = '''
-                    select * from HR_EMPLOYEE_STAGE where employee_id = :employee_id
+                    select * from football_matches where fb_id = :fb_id
 
                     '''
         cursor=connection.cursor()
-        cursor.execute(query,employee_id=id)
+        cursor.execute(query,fb_id=id)
         data=cursor.fetchone() #gets all records
     elif request.method == 'POST':##save button
  ##insert  for football
 
-        first_name= request.form.get('first_name')
-        last_name= request.form.get('last_name')
-        email= request.form.get('email')
-        phone_number= request.form.get('phone_number')
-        hire_date= request.form.get('hire_date')
-        job_id= request.form.get('job_id')
-        salary= request.form.get('salary')
-        commission_pct= request.form.get('commission_pct')
-        manager_id= request.form.get('manager_id')
-        department_id= request.form.get('department_id')
-        department_name= request.form.get('department_name')
+        fb_date= request.form.get('fb_date')
+        fb_home_team= request.form.get('fb_home_team')
+        fb_away_team= request.form.get('fb_away_team')
+        fb_h_continent= request.form.get('fb_h_continent')
+        fb_a_continent= request.form.get('fb_a_continent')
+        fb_ht_score= request.form.get('fb_ht_score')
+        fb_at_score= request.form.get('fb_at_score')
+        fb_tournament= request.form.get('fb_tournament')
+        fb_city= request.form.get('fb_city')
+        fb_country= request.form.get('fb_country')
+        fb_n_location= request.form.get('fb_n_location')
+        fb_shoot_out= request.form.get('fb_shoot_out')
+        fb_ht_result= request.form.get('fb_ht_result')
+        
+        
         datetime_object=datetime.strptime(str(hire_date), '%Y-%m-%d %H:%M:%S')
 
 
@@ -128,26 +134,28 @@ def football_edit(id):
              ##insert  for football
             query='''
 
-            update HR_EMPLOYEE_STAGE 
+            update football_matches 
             set
-            first_name=:first_name,
-            last_name=:last_name,
-            email=:email,
-            phone_number=:phone_number,
-            hire_date=:hire_date,
-            job_id=:job_id,
-            salary=:salary,
-            commission_pct=:commission_pct,
-            manager_id=:manager_id,
-            department_id=:department_id,
-            department_name=:department_name
-            where employee_id=:employee_id
+            fb_date=:fb_date,
+            fb_home_team=:fb_home_team,
+            fb_away_team=:fb_away_team,
+            fb_h_continent=:fb_h_continent,
+            fb_a_continent=:fb_a_continent,
+            fb_ht_score=:fb_ht_score,
+            fb_at_score=:fb_at_score,
+            fb_tournament=:fb_tournament,
+            fb_city=:fb_city,
+            fb_country=:department_id,
+            fb_n_location=:fb_n_location,
+            fb_shoot_out=:fb_shoot_out,
+            fb_ht_result=:fb_ht_result
+            where fb_id=:fb_id
         '''
  ##insert  for football
         cursor=connection.cursor()
-        cursor.execute(query,employee_id=id,first_name=first_name,last_name=last_name,email=email,phone_number=phone_number,
-        hire_date=datetime_object,job_id=job_id,salary=salary,commission_pct=commission_pct,manager_id=manager_id,
-        department_id=department_id,department_name=department_name
+        cursor.execute(query,fb_id=id,fb_date=fb_date,fb_home_team=fb_home_team,fb_away_team=fb_away_team,fb_h_continent=fb_h_continent,
+        fb_a_continent=fb_a_continent,fb_ht_score=fb_ht_score,fb_at_score=fb_at_score,fb_tournament=fb_tournament,fb_city=fb_city,
+        fb_country=fb_country,fb_n_location=fb_n_location,fb_shoot_out=fb_shoot_out,fb_ht_result=fb_ht_result
         )
         print(type(datetime_object))
         print(datetime_object)
@@ -173,7 +181,7 @@ def football_delete(id):
         with OracleDB().get_connection() as connection:
            ##insert  for football
            query = '''
-                    select * from HR_EMPLOYEE_STAGE where employee_id = :employee_id
+                    select * from football_matches where fb_id = :fb_id
 
                     '''
         cursor=connection.cursor()
@@ -185,8 +193,8 @@ def football_delete(id):
         with OracleDB().get_connection() as connection:
             query='''
 
-            delete from HR_EMPLOYEE_STAGE 
-            where  employee_id = :employee_id
+            delete from football_matches 
+            where  fb_id = :fb_id
             
         '''
 
@@ -215,32 +223,37 @@ def football_add():
             insert_statement="""
 
                                  INSERT INTO HR_EMPLOYEE_STAGE
-                                        (
-                                        EMPLOYEE_ID,
-                                        FIRST_NAME,
-                                        LAST_NAME,
-                                        EMAIL,
+                                         (
+                                        fb_id,
+                                        fb_date,
+                                        fb_home_team,
+                                        fb_away_team,
                                         PHONE_NUMBER,
-                                        HIRE_DATE,
-                                        JOB_ID,
-                                        SALARY,
-                                        COMMISSION_PCT,
-                                        MANAGER_ID,
-                                        DEPARTMENT_ID,
-                                        DEPARTMENT_NAME)
+                                        fb_h_continent,
+                                        fb_a_continent,
+                                        fb_ht_score,
+                                        fb_at_score,
+                                        fb_tournament,
+                                        fb_country,
+                                        fb_n_location,
+                                        fb_shoot_out,
+                                        fb_ht_result)
+                                    
                                          VALUES(
-                                        :EMPLOYEE_ID,
-                                        :FIRST_NAME,
-                                        :LAST_NAME,
-                                        :EMAIL,
+                                        :fb_id,
+                                        :fb_date,
+                                        :fb_home_team,
+                                        :fb_away_team,
                                         :PHONE_NUMBER,
-                                        :HIRE_DATE,
-                                        :JOB_ID,
-                                        :SALARY,
-                                        :COMMISSION_PCT,
-                                        :MANAGER_ID,
-                                        :DEPARTMENT_ID,
-                                        :DEPARTMENT_NAME
+                                        :fb_h_continent,
+                                        :fb_a_continent,
+                                        :fb_ht_score,
+                                        :fb_at_score,
+                                        :fb_tournament,
+                                        :fb_country,
+                                        :fb_n_location,
+                                        :fb_shoot_out,
+                                        :fb_ht_result)
                                         )
                                         """
 ##insert  for footbal
