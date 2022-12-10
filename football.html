@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<link href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet" crossorigin="anonymous">
+<h1> football</h1>
+
+<hr/>
+
+<form method="post" enctype="multipart/form-data"><!--- TELL IT IS NOT REGULAR DATA -->
+
+<label class="form-label" class="form-label"></label>
+<input type="file" class="form-control" id="dataFile"  name='dataFile'/>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+<table  id='mytable' class="table">
+   
+    <thead>
+         <button type="button" >
+        <a href="employee_add"  class="btn btn-dark">ADD NEW</a>
+    </button>
+            <tr>
+                <th>date</th>
+                <th>home_team</th>
+                <th>away_team</th>
+               
+
+                <th>home_team_continent</th>
+                <th>away_team_continent</th>
+                <th>home_team_score</th>
+
+                <th>away_team_score</th>
+                <th>tournament</th>
+                <th>city</th>
+
+                <th>country</th>
+                <th>neutral_location</th>
+                <th>shoot_out</th>
+                <th>home_team_result</th>
+                <th></th>
+            </tr>
+
+
+    </thead>
+
+
+
+    <tbody><!--this sets up tables-->
+        {% for row in data %}
+            <!--data goes here-->
+
+                <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td><!--{{row[0]}} this is the index of the row headers start at 0-->
+                <td>{{row[2]}}</td>
+
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td><!--{{row[0]}} this is the index of the row headers start at 0-->
+                <td>{{row[5]}}</td>
+
+
+                <td>{{row[6]}}</td>
+                <td>{{row[7]}}</td><!--{{row[0]}} this is the index of the row headers start at 0-->
+                <td>{{row[8]}}</td>
+
+
+                <td>{{row[9]}}</td>
+                <td>{{row[10]}}</td><!--{{row[0]}} this is the index of the row headers start at 0-->
+                <td>{{row[11]}}</td>
+                <td>{{row[12]}}</td>
+                <th>
+                    <!--<button type="button" >
+                        <a href="employee_edit/{{row[0]}}" class="btn btn-dark">Edit</a>
+                    </button>
+                    <button type="button" >
+                        <a href="employee_delete/{{row[0]}}" class="btn btn-dark">Delete</a>
+                    </button>-->
+                    
+                    
+    
+                </th>
+            </tr>
+        {% endfor  %}
+
+        </tbody>
+
+
+    <tfoot>
+            <tr>
+                <th>OID</th>
+                <th>First name</th>
+                <th>Last Name</th>
+
+                <th>EMAIL</th>
+                <th>PHONE_NUMBER</th>
+                <th>HIRE_DATE</th>
+
+                <th>JOB_ID</th>
+                <th>SALARY</th>
+                <th>COMMISSION_PCT</th>
+
+                <th>MANAGER_ID</th>
+                <th>DEPARTMENT_ID</th>
+                <th>DEPARTMENT_NAME</th>
+            </tr>
+
+
+        </tfoot>
+    </table>
+    <script
+    src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"  crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#mytable').DataTable();
+        } );
+    </script>
+    
+<!--end of setup of table sets up tables-->
+
+        {% endblock content %}
+
+    
