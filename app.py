@@ -54,7 +54,7 @@ def football():##insert for football
                         insert_statement= '''
                                  INSERT INTO FOOTBALL_MATCHES
                                         (
-                                        
+                                        FB_ID,
                                         FB_DATE,
                                         FB_HOME_TEAM,
                                         FB_AWAY_TEAM,
@@ -70,7 +70,7 @@ def football():##insert for football
                                         FB_HT_RESULT)
 
                                         VALUES(
-                                        
+                                        :FB_ID,
                                         :FB_DATE,
                                         :FB_HOME_TEAM,
                                         :FB_AWAY_TEAM,
@@ -232,15 +232,29 @@ def football_delete(id):
 
 @app.route('/football_add/',methods=['GET','POST'])
 def football_add():
-    print('in employee_add:', request.method)
+    print('in football_add:', request.method)
     data = None
     if request.method == 'GET':
-        return render_template("football_add.html",title=" Add Employees")
+        return render_template("football_add.html",title=" Add Match")
         
     elif request.method == 'POST':##save button
         with OracleDB().get_connection() as connection:
 ##insert  for footbal
-            cursor=connection.cursor()##open database with cursor
+
+            cursor = connection.cursor() 
+
+               
+            # seq_sql = """
+            #     SELECT seq_item.NEXTVAL FROM DUAL
+            #     """
+
+
+
+            #     #print(seq_sql)
+            # cursor.execute(seq_sql)
+
+            # FB_ID = cursor.fetchone()[0]
+            
             insert_statement="""
                                  INSERT INTO FOOTBALL_MATCHES
                                         (
@@ -273,13 +287,16 @@ def football_add():
                                         :FB_COUNTRY,
                                         :FB_N_LOCATION,
                                         :FB_SHOOT_OUT,
-                                        :FB_HT_RESULT)
+                                        :FB_HT_RESULT
                                         )
                                         """
 ##insert  for footbal
+            
             seq_statement = """
-                select FOOTBALL_MATCHES_seq.nextval from dual
+                select FOOTBALL_MATCHES_SEQ.nextval from dual
                 """
+
+            print(insert_statement, seq_statement)
             cursor.execute(seq_statement)
             FB_ID = cursor.fetchone()[0]
             FB_DATE = request.form.get("FB_DATE")
@@ -296,9 +313,11 @@ def football_add():
             FB_SHOOT_OUT = request.form.get("FB_SHOOT_OUT")
             FB_HT_RESULT = request.form.get("FB_HT_RESULT")
             #change datatype for hire_date(str) to datetime when saving it back to database
-            datetime_object = datetime.strptime(FB_DATE, '%Y-%m-%d %H:%M:%S')
+            #datetime_object = datetime.strptime(FB_DATE, '%Y-%m-%d %H:%M:%S')
 
-            
+            print(insert_statement,FB_ID,FB_DATE,FB_HOME_TEAM,FB_AWAY_TEAM,FB_H_CONTINENT,
+            FB_A_CONTINENT,FB_HT_SCORE,FB_AT_SCORE,FB_TOURNAMENT,FB_CITY,
+            FB_COUNTRY,FB_N_LOCATION,FB_SHOOT_OUT,FB_HT_RESULT) 
  
             cursor.execute(insert_statement,FB_ID=FB_ID,FB_DATE=FB_DATE,FB_HOME_TEAM=FB_HOME_TEAM,FB_AWAY_TEAM=FB_AWAY_TEAM,FB_H_CONTINENT=FB_H_CONTINENT,
             FB_A_CONTINENT=FB_A_CONTINENT,FB_HT_SCORE=FB_HT_SCORE,FB_AT_SCORE=FB_AT_SCORE,FB_TOURNAMENT=FB_TOURNAMENT,FB_CITY=FB_CITY,
