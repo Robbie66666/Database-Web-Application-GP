@@ -20,7 +20,7 @@
     <thead>
          <button type="button" >
         <a href="football_add"  class="btn btn-dark">ADD NEW</a>
-    </button>
+        </button>
             <tr>
                 <tr>
                     <th>fb_id</th>
@@ -35,12 +35,14 @@
                     <th>fb_ht_score</th>
                     <th>fb_at_score</th>
                     <th>fb_tournament</th>
+                    <th>fb_city</th>
     
                     <th>fb_country</th>
                     <th>fb_n_location</th>
                     <th>fb_shoot_out</th>
                     <th>fb_ht_result</th>
                 </tr>
+            </tr>
     
 
     </thead>
@@ -70,21 +72,12 @@
                 <td>{{row[10]}}</td><!--{{row[0]}} this is the index of the row headers start at 0-->
                 <td>{{row[11]}}</td>
                 <td>{{row[12]}}</td>
-                <th>
-                    <!--<button type="button" >
-                        <a href="employee_edit/{{row[0]}}" class="btn btn-dark">Edit</a>
-                    </button>
-                    <button type="button" >
-                        <a href="employee_delete/{{row[0]}}" class="btn btn-dark">Delete</a>
-                    </button>-->
-                    
-                    
-    
-                </th>
+                <td>{{row[13]}}</td>
+
             </tr>
         {% endfor  %}
 
-        </tbody>
+    </tbody>
 
 
     <tfoot>
@@ -100,6 +93,7 @@
             <th>fb_ht_score</th>
             <th>fb_at_score</th>
             <th>fb_tournament</th>
+            <th>fb_city</th>
 
             <th>fb_country</th>
             <th>fb_n_location</th>
@@ -108,7 +102,7 @@
         </tr>
 
 
-        </tfoot>
+    </tfoot>
     </table>
     <script
     src="https://code.jquery.com/jquery-3.6.1.min.js"
