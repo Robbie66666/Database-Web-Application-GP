@@ -1,0 +1,16 @@
+##football from 12/11 redo 
+
+def football():##insert for football
+    print('in football:', request.method)
+    if request.method == "POST":
+        file=request.files['dataFile']
+        if file:
+            filename=secure_filename(file.filename)
+            #print("filename:",filename)
+            file_path=os.path.join(app.config['UPLOAD_FOLDER'],filename)
+            print("file_path:",file_path)
+            file.save(file_path)
+        elif request.method == 'GET':
+            pass
+        
+    return render_template("football.html",title="football")
