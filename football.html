@@ -11,7 +11,7 @@
 
 <label class="form-label" class="form-label"></label>
 <input type="file" class="form-control" id="dataFile"  name='dataFile'/>
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="btn btn-primary">Enter</button>
 
 </form>
 
@@ -74,6 +74,16 @@
                 <td>{{row[12]}}</td>
                 <td>{{row[13]}}</td>
 
+                <th>
+                    <button type="button" >
+                        <a href="/football_edit/{{[]}}" class="btn btn-primary">Edit</a>
+                    </button>
+                    <button type="button" >
+                        <a href="/football_delete/{{[]}}" class="btn btn-primary">Delete</a>
+                    </button>
+                    
+                    
+                </th>
             </tr>
         {% endfor  %}
 
@@ -99,6 +109,8 @@
             <th>fb_n_location</th>
             <th>fb_shoot_out</th>
             <th>fb_ht_result</th>
+
+
         </tr>
 
 
