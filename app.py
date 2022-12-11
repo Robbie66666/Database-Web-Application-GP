@@ -130,6 +130,7 @@ def football_edit(id):
     elif request.method == 'POST':##save button
  ##insert  for football
 
+       
         FB_DATE= request.form.get('FB_DATE')
         FB_HOME_TEAM= request.form.get('FB_HOME_TEAM')
         FB_AWAY_TEAM= request.form.get('FB_AWAY_TEAM')
@@ -145,7 +146,7 @@ def football_edit(id):
         FB_HT_RESULT= request.form.get('FB_HT_RESULT')
         
         
-        datetime_object=datetime.strptime(str(FB_DATE), '%Y-%m-%d %H:%M:%S')
+        #datetime_object=datetime.strptime(str(FB_DATE), '%Y-%m-%d %H:%M:%S')
 
 
         
@@ -168,20 +169,21 @@ def football_edit(id):
             FB_AT_SCORE=:FB_AT_SCORE,
             FB_TOURNAMENT=:FB_TOURNAMENT,
             FB_CITY=:FB_CITY,
-            FB_COUNTRY=:department_id,
+            FB_COUNTRY=:FB_COUNTRY,
             FB_N_LOCATION=:FB_N_LOCATION,
             FB_SHOOT_OUT=:FB_SHOOT_OUT,
             FB_HT_RESULT=:FB_HT_RESULT
             where FB_ID=:FB_ID
         '''
+        print(query)
  ##insert  for football
         cursor=connection.cursor()
         cursor.execute(query,FB_ID=id,FB_DATE=FB_DATE,FB_HOME_TEAM=FB_HOME_TEAM,FB_AWAY_TEAM=FB_AWAY_TEAM,FB_H_CONTINENT=FB_H_CONTINENT,
         FB_A_CONTINENT=FB_A_CONTINENT,FB_HT_SCORE=FB_HT_SCORE,FB_AT_SCORE=FB_AT_SCORE,FB_TOURNAMENT=FB_TOURNAMENT,FB_CITY=FB_CITY,
         FB_COUNTRY=FB_COUNTRY,FB_N_LOCATION=FB_N_LOCATION,FB_SHOOT_OUT=FB_SHOOT_OUT,FB_HT_RESULT=FB_HT_RESULT
         )
-        print(type(datetime_object))
-        print(datetime_object)
+        #print(type(datetime_object))
+        #print(datetime_object)
         connection.commit()
         return redirect( url_for('football') )
 
